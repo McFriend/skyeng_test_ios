@@ -24,6 +24,10 @@
 		F5F40A6A24B9F4DF00AB5780 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A6924B9F4DF00AB5780 /* TableViewController.swift */; };
 		F5F40A6C24B9FACA00AB5780 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A6B24B9FACA00AB5780 /* Extensions.swift */; };
 		F5F40A6F24BA00F900AB5780 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5F40A7124BA00F900AB5780 /* Localizable.strings */; };
+		F5F40A7524BA02CC00AB5780 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7424BA02CC00AB5780 /* ApiManager.swift */; };
+		F5F40A7724BA057600AB5780 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7624BA057600AB5780 /* Errors.swift */; };
+		F5F40A7A24BA077700AB5780 /* SearchApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7924BA077700AB5780 /* SearchApiManager.swift */; };
+		F5F40A7D24BA07C200AB5780 /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7C24BA07C200AB5780 /* WordModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 		F5F40A7024BA00F900AB5780 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F5F40A7224BA010F00AB5780 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F5F40A7324BA010F00AB5780 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F5F40A7424BA02CC00AB5780 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		F5F40A7624BA057600AB5780 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		F5F40A7924BA077700AB5780 /* SearchApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApiManager.swift; sourceTree = "<group>"; };
+		F5F40A7C24BA07C200AB5780 /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +145,8 @@
 				F5F40A6924B9F4DF00AB5780 /* TableViewController.swift */,
 				F5F40A5824B9E92500AB5780 /* ViewModel.swift */,
 				F5F40A6B24B9FACA00AB5780 /* Extensions.swift */,
+				F5F40A7624BA057600AB5780 /* Errors.swift */,
+				F5F40A7424BA02CC00AB5780 /* ApiManager.swift */,
 				F5F40A5A24B9EAC200AB5780 /* Search */,
 				F5C3AE9824B9E29200F425D4 /* Assets.xcassets */,
 				F5C3AE9A24B9E29200F425D4 /* LaunchScreen.storyboard */,
@@ -158,6 +168,8 @@
 		F5F40A5A24B9EAC200AB5780 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				F5F40A7824BA076D00AB5780 /* Api */,
+				F5F40A7B24BA07A200AB5780 /* Model */,
 				F5F40A6624B9F41B00AB5780 /* ViewModel */,
 				F5F40A5F24B9ED2E00AB5780 /* View */,
 			);
@@ -195,6 +207,22 @@
 				F5F40A6724B9F42A00AB5780 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F5F40A7824BA076D00AB5780 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				F5F40A7924BA077700AB5780 /* SearchApiManager.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		F5F40A7B24BA07A200AB5780 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F5F40A7C24BA07C200AB5780 /* WordModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,10 +396,14 @@
 			files = (
 				F5F40A5D24B9EADA00AB5780 /* SearchViewController.swift in Sources */,
 				F5F40A5924B9E92500AB5780 /* ViewModel.swift in Sources */,
+				F5F40A7A24BA077700AB5780 /* SearchApiManager.swift in Sources */,
 				F5F40A6524B9ED6400AB5780 /* SearchResultTableViewCell.swift in Sources */,
+				F5F40A7D24BA07C200AB5780 /* WordModel.swift in Sources */,
 				F5F40A6A24B9F4DF00AB5780 /* TableViewController.swift in Sources */,
+				F5F40A7524BA02CC00AB5780 /* ApiManager.swift in Sources */,
 				F5F40A6C24B9FACA00AB5780 /* Extensions.swift in Sources */,
 				F5C3AE9424B9E29000F425D4 /* ViewController.swift in Sources */,
+				F5F40A7724BA057600AB5780 /* Errors.swift in Sources */,
 				F5F40A5724B9E79600AB5780 /* Router.swift in Sources */,
 				F5C3AE9024B9E29000F425D4 /* AppDelegate.swift in Sources */,
 				F5F40A6824B9F42A00AB5780 /* SearchViewModel.swift in Sources */,
