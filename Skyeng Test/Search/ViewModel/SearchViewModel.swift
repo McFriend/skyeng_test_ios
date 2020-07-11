@@ -38,8 +38,8 @@ class SearchViewModel: ViewModel {
             .disposed(by: bag)
     }
     
-    func cellData(for model: WordModel) -> SearchResultTableViewCellViewModel {
-        return SearchResultTableViewCellViewModel(searchText: self.searchText.value, title: model.text, subtitle: model.meanings.map({ meaning in
+    func cellData(for model: WordModel) -> SearchResultTableViewCellData {
+        return SearchResultTableViewCellData(searchText: self.searchText.value, title: model.text, subtitle: model.meanings.map({ meaning in
             meaning.translation.text
         }).joined(separator: ", "), previewURL: model.meanings.first?.previewUrl, showsDisclosureIndicator: model.meanings.count > 1)
     }
@@ -48,7 +48,7 @@ class SearchViewModel: ViewModel {
         if model.meanings.count > 1 {
             return Router.shared.meaningsViewController(for: model)
         } else if let meaning = model.meanings.first {
-            print(meaning.transcription)
+            return Router.shared.detailMeaningViewController(for: meaning)
         }
         return nil
     }

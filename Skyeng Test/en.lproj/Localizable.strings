@@ -8,3 +8,19 @@
 
 "SEARCH_PLACEHOLDER" = "Enter a word";
 "SEARCH_TITLE" = "Search";
+"NOUN" = "Noun";
+"VERB" = "Verb";
+"ADJECTIVE" = "Adjective";
+"ADVERB" = "Adverb";
+"PREPOSITION" = "Preposition";
+"PRONOUN" = "Pronoun";
+"CARDINAL_NUMBER" = "Cardinal number";
+"CONJUNCTION" = "Conjunction";
+"INTERJECTION" = "Interjection";
+"ARTICLE" = "Article";
+"ABBREVIATION" = "Abbreviation";
+"PARTICLE" = "Particle";
+"ORDINAL_NUMBER" = "Ordinal number";
+"MODAL_VERB" = "Modal verb";
+"PHRASE" = "Phrase";
+"IDIOM" = "Idiom";

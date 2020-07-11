@@ -80,7 +80,7 @@ class SearchViewController: TableViewController {
         tableView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(searchField.snp.bottom)
-            make.bottom.equalTo(view.snp.bottomMargin)
+            make.bottom.equalToSuperview()
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 class Router {
     static var shared: Router = {
         let instance = Router()
@@ -31,8 +32,14 @@ class Router {
     }
     
     func meaningsViewController(for word: WordModel) -> ViewControllerProtocol {
-        let viewModel = SearchResultViewModel(result: Observable.just(word))
+        let viewModel = SearchResultViewModel(result: BehaviorRelay(value: word))
         let viewController = SearchResultController(viewModel: viewModel)
+        return viewController
+    }
+    
+    func detailMeaningViewController(for meaning: MeaningModel) -> ViewControllerProtocol {
+        let viewModel = DetailMeaningViewModel(parentModel: meaning)
+        let viewController = DetailMeaningController(viewModel: viewModel)
         return viewController
     }
 }

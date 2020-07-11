@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxRelay
 import RxKingfisher
-struct SearchResultTableViewCellViewModel {
+struct SearchResultTableViewCellData {
     var searchText: String?
     var title: String?
     var subtitle: String?
@@ -27,19 +27,19 @@ class SearchResultTableViewCell: TableViewCell {
     let subtitleLabelFont = UIFont.preferredFont(forTextStyle: .caption1)
     let titleLabelColor = UIColor.label
     let subtitleLabelColor = UIColor.secondaryLabel
-    var viewModel: SearchResultTableViewCellViewModel?
+    var data: SearchResultTableViewCellData?
     
-    func configured(with viewModel: SearchResultTableViewCellViewModel) -> SearchResultTableViewCell{
-        self.viewModel = viewModel
+    func configured(with data: SearchResultTableViewCellData) -> SearchResultTableViewCell{
+        self.data = data
         bindViewModel()
         return self
     }
     
     func bindViewModel() {
-        guard let viewModel = viewModel else { return }
-        updateTitleLabel(title: viewModel.title ?? "", searchText: viewModel.searchText ?? "")
-        subtitleLabel.text = viewModel.subtitle
-        if let url = URL(string: "https:" + (viewModel.previewURL ?? "")) {
+        guard let data = data else { return }
+        updateTitleLabel(title: data.title ?? "", searchText: data.searchText ?? "")
+        subtitleLabel.text = data.subtitle
+        if let url = URL(string: data.previewURL?.httpsUrl ?? "") {
             previewImageView.kf.setImage(with: url)
         }
     }
@@ -49,7 +49,7 @@ class SearchResultTableViewCell: TableViewCell {
         let searchRange = NSString(string: title.lowercased()).range(of: searchText.lowercased())
         attrString.addAttribute(.font, value: self.titleLabelFont.boldVersion, range: searchRange)
         self.titleLabel.attributedText = attrString
-        accessoryType = (viewModel?.showsDisclosureIndicator ?? false) ? .disclosureIndicator : .none
+        accessoryType = (data?.showsDisclosureIndicator ?? false) ? .disclosureIndicator : .none
     }
     
     override func adjustUI() {
@@ -62,12 +62,14 @@ class SearchResultTableViewCell: TableViewCell {
         subtitleLabel.font = subtitleLabelFont
         subtitleLabel.textColor = subtitleLabelColor
         previewImageView.contentMode = .scaleAspectFill
+        previewImageView.clipsToBounds = true
     }
     
     override func configureConstraints() {
         super.configureConstraints()
         previewImageView.snp.makeConstraints { (make) in
-            make.leading.top.equalToSuperview().offset(8)
+            make.leading.equalTo(snp.leadingMargin).offset(8)
+            make.top.equalToSuperview().offset(8)
             make.bottom.lessThanOrEqualToSuperview().offset(-8)
             make.height.equalTo(36)
             make.width.equalTo(48)
@@ -75,12 +77,12 @@ class SearchResultTableViewCell: TableViewCell {
         titleLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(previewImageView.snp.trailing).offset(8)
             make.top.equalToSuperview().offset(6)
-            make.trailing.equalToSuperview().offset(-8)
+            make.trailing.equalTo(snp.trailingMargin).offset(-8)
         }
         subtitleLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(titleLabel)
             make.top.equalTo(titleLabel.snp.bottom)
-            make.trailing.equalToSuperview().offset(-44)
+            make.trailing.equalTo(snp.trailingMargin).offset(-44)
             make.bottom.lessThanOrEqualToSuperview().offset(-8)
         }
     }

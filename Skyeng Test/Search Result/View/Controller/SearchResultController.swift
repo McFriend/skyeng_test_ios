@@ -31,6 +31,9 @@ class SearchResultController: TableViewController {
         .disposed(by: viewModel.bag)
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] (indexPath) in
             self.tableView.deselectRow(at: indexPath, animated: true)
+            let model = viewModel.result.value.meanings[indexPath.row]
+            guard let vc = self.viewModel?.nextController(for: model) else { return }
+            self.show(vc, sender: self)
         }).disposed(by: viewModel.bag)
     }
     
@@ -44,7 +47,7 @@ class SearchResultController: TableViewController {
         tableView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(view.snp.topMargin)
-            make.bottom.equalTo(view.snp.bottomMargin)
+            make.bottom.equalToSuperview()
         }
     }
 }

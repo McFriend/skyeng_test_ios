@@ -11,16 +11,20 @@ import RxSwift
 import RxRelay
 
 class SearchResultViewModel: ViewModel {
-    var result: Observable<WordModel>
+    var result: BehaviorRelay<WordModel>
     
-    init(result: Observable<WordModel>) {
+    init(result: BehaviorRelay<WordModel>) {
         self.result = result
         super.init()
     }
 
     
-    func cellData(for model: MeaningModel) -> SearchResultTableViewCellViewModel {
-        return SearchResultTableViewCellViewModel(searchText: nil, title: model.translation.text, subtitle: model.translation.note, previewURL: model.previewUrl, showsDisclosureIndicator: false)
+    func cellData(for model: MeaningModel) -> SearchResultTableViewCellData {
+        return SearchResultTableViewCellData(searchText: nil, title: model.translation.text, subtitle: model.translation.note, previewURL: model.previewUrl, showsDisclosureIndicator: false)
     }
 
+    
+    func nextController(for meaning: MeaningModel) -> ViewControllerProtocol? {
+        return Router.shared.detailMeaningViewController(for: meaning)
+    }
 }
