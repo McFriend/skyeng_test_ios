@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12D9B3BA95F4FE715C99398E /* Pods_Skyeng_TestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42203108588D54E64DC72D0 /* Pods_Skyeng_TestTests.framework */; };
+		D7F0C6F8B1FEC16E2D21EB2C /* Pods_Skyeng_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D119AF010074F5CF791DE964 /* Pods_Skyeng_Test.framework */; };
 		F5C3AE9024B9E29000F425D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3AE8F24B9E29000F425D4 /* AppDelegate.swift */; };
 		F5C3AE9224B9E29000F425D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3AE9124B9E29000F425D4 /* SceneDelegate.swift */; };
 		F5C3AE9424B9E29000F425D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3AE9324B9E29000F425D4 /* ViewController.swift */; };
@@ -27,6 +29,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		038674A4E65C8781C3320C5E /* Pods-Skyeng TestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyeng TestTests.debug.xcconfig"; path = "Target Support Files/Pods-Skyeng TestTests/Pods-Skyeng TestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9A0F8C71DC79604A4743B7A2 /* Pods-Skyeng TestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyeng TestTests.release.xcconfig"; path = "Target Support Files/Pods-Skyeng TestTests/Pods-Skyeng TestTests.release.xcconfig"; sourceTree = "<group>"; };
+		A6AE6B7164D46AA3EC291984 /* Pods-Skyeng Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyeng Test.debug.xcconfig"; path = "Target Support Files/Pods-Skyeng Test/Pods-Skyeng Test.debug.xcconfig"; sourceTree = "<group>"; };
+		D119AF010074F5CF791DE964 /* Pods_Skyeng_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyeng_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D42203108588D54E64DC72D0 /* Pods_Skyeng_TestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyeng_TestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E534602CBBA99FC585AC3712 /* Pods-Skyeng Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyeng Test.release.xcconfig"; path = "Target Support Files/Pods-Skyeng Test/Pods-Skyeng Test.release.xcconfig"; sourceTree = "<group>"; };
 		F5C3AE8C24B9E29000F425D4 /* Skyeng Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyeng Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C3AE8F24B9E29000F425D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5C3AE9124B9E29000F425D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7F0C6F8B1FEC16E2D21EB2C /* Pods_Skyeng_Test.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +61,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12D9B3BA95F4FE715C99398E /* Pods_Skyeng_TestTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB7C3BF405DE4735FA5A05CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D119AF010074F5CF791DE964 /* Pods_Skyeng_Test.framework */,
+				D42203108588D54E64DC72D0 /* Pods_Skyeng_TestTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F3B90E8B1B05D2DD9825927B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A6AE6B7164D46AA3EC291984 /* Pods-Skyeng Test.debug.xcconfig */,
+				E534602CBBA99FC585AC3712 /* Pods-Skyeng Test.release.xcconfig */,
+				038674A4E65C8781C3320C5E /* Pods-Skyeng TestTests.debug.xcconfig */,
+				9A0F8C71DC79604A4743B7A2 /* Pods-Skyeng TestTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F5C3AE8324B9E29000F425D4 = {
 			isa = PBXGroup;
 			children = (
 				F5C3AE8E24B9E29000F425D4 /* Skyeng Test */,
 				F5C3AEA524B9E29300F425D4 /* Skyeng TestTests */,
 				F5C3AE8D24B9E29000F425D4 /* Products */,
+				F3B90E8B1B05D2DD9825927B /* Pods */,
+				BB7C3BF405DE4735FA5A05CB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,9 +139,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5C3AEAB24B9E29300F425D4 /* Build configuration list for PBXNativeTarget "Skyeng Test" */;
 			buildPhases = (
+				A2179E509D29D052ABAE79AA /* [CP] Check Pods Manifest.lock */,
 				F5C3AE8824B9E29000F425D4 /* Sources */,
 				F5C3AE8924B9E29000F425D4 /* Frameworks */,
 				F5C3AE8A24B9E29000F425D4 /* Resources */,
+				001D3392680A4DF9432726FF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +158,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5C3AEAE24B9E29300F425D4 /* Build configuration list for PBXNativeTarget "Skyeng TestTests" */;
 			buildPhases = (
+				A7A40D242222A150A44FA3E5 /* [CP] Check Pods Manifest.lock */,
 				F5C3AE9E24B9E29300F425D4 /* Sources */,
 				F5C3AE9F24B9E29300F425D4 /* Frameworks */,
 				F5C3AEA024B9E29300F425D4 /* Resources */,
@@ -194,6 +230,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		001D3392680A4DF9432726FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyeng Test/Pods-Skyeng Test-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyeng Test/Pods-Skyeng Test-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skyeng Test/Pods-Skyeng Test-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2179E509D29D052ABAE79AA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Skyeng Test-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7A40D242222A150A44FA3E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Skyeng TestTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F5C3AE8824B9E29000F425D4 /* Sources */ = {
@@ -360,6 +460,7 @@
 		};
 		F5C3AEAC24B9E29300F425D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6AE6B7164D46AA3EC291984 /* Pods-Skyeng Test.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +479,7 @@
 		};
 		F5C3AEAD24B9E29300F425D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E534602CBBA99FC585AC3712 /* Pods-Skyeng Test.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +498,7 @@
 		};
 		F5C3AEAF24B9E29300F425D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 038674A4E65C8781C3320C5E /* Pods-Skyeng TestTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -418,6 +521,7 @@
 		};
 		F5C3AEB024B9E29300F425D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A0F8C71DC79604A4743B7A2 /* Pods-Skyeng TestTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
