@@ -6,4 +6,5 @@
   Copyright © 2020 Georgiy Sabanov. All rights reserved.
 */
 
-"SEARCH_PLACEHOLDER" = "Search";
+"SEARCH_PLACEHOLDER" = "Enter a word";
+"SEARCH_TITLE" = "Search";

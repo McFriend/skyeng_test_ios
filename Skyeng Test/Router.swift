@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import RxSwift
 class Router {
     static var shared: Router = {
         let instance = Router()
@@ -26,6 +26,13 @@ class Router {
     func searchViewController() -> ViewControllerProtocol {
         let viewModel = SearchViewModel()
         let viewController = SearchViewController(viewModel: viewModel)
+        let navigationController = NavigationController(rootViewController: viewController)
+        return navigationController
+    }
+    
+    func meaningsViewController(for word: WordModel) -> ViewControllerProtocol {
+        let viewModel = SearchResultViewModel(result: Observable.just(word))
+        let viewController = SearchResultController(viewModel: viewModel)
         return viewController
     }
 }

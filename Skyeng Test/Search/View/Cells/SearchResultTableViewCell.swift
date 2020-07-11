@@ -16,6 +16,7 @@ struct SearchResultTableViewCellViewModel {
     var title: String?
     var subtitle: String?
     var previewURL: String?
+    var showsDisclosureIndicator: Bool
 }
 
 class SearchResultTableViewCell: TableViewCell {
@@ -48,11 +49,11 @@ class SearchResultTableViewCell: TableViewCell {
         let searchRange = NSString(string: title.lowercased()).range(of: searchText.lowercased())
         attrString.addAttribute(.font, value: self.titleLabelFont.boldVersion, range: searchRange)
         self.titleLabel.attributedText = attrString
+        accessoryType = (viewModel?.showsDisclosureIndicator ?? false) ? .disclosureIndicator : .none
     }
     
     override func adjustUI() {
         super.adjustUI()
-        accessoryType = .disclosureIndicator
         addSubview(titleLabel)
         addSubview(subtitleLabel)
         addSubview(previewImageView)

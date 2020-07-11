@@ -23,10 +23,11 @@ class SearchViewController: TableViewController {
     
     override func bind() {
         guard let viewModel = viewModel else { return }
+        viewModel.title.bind(to: self.navigationItem.rx.title).disposed(by: viewModel.bag)
         viewModel.results.compactMap({$0})
         .bind(to: tableView.rx.items) { (tableView, row, element) in
             if let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.typeName) as? SearchResultTableViewCell {
-                return cell.configured(with: element)
+                return cell.configured(with: viewModel.cellData(for: element))
             }
             return UITableViewCell()
         }
@@ -45,6 +46,8 @@ class SearchViewController: TableViewController {
         }).bind(to: viewModel.page).disposed(by: viewModel.bag)
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] (indexPath) in
             self.tableView.deselectRow(at: indexPath, animated: true)
+            guard let model = viewModel.results.value?[indexPath.row], let vc = self.viewModel?.nextController(for: model) else { return }
+            self.show(vc, sender: self)
         }).disposed(by: viewModel.bag)
         searchField
             .rx.text
@@ -75,8 +78,9 @@ class SearchViewController: TableViewController {
             make.leading.trailing.equalToSuperview()
         }
         tableView.snp.makeConstraints { (make) in
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.top.equalTo(searchField.snp.bottom)
+            make.bottom.equalTo(view.snp.bottomMargin)
         }
     }
 }
