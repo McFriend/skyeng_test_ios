@@ -16,10 +16,16 @@ class Router {
     private init() {}
 
     func mainViewController() -> ViewControllerProtocol {
-        return emptyViewController()
+        return searchViewController()
     }
     
     func emptyViewController() -> ViewControllerProtocol {
         return ViewController(viewModel: ViewModel())
+    }
+    
+    func searchViewController() -> ViewControllerProtocol {
+        let viewModel = SearchViewModel()
+        let viewController = SearchViewController(viewModel: viewModel)
+        return viewController
     }
 }
