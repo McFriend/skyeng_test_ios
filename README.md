@@ -1,7 +1,7 @@
 # Skyeng Demo Project
 ## Setup
 ### Для того, чтобы запустить проект, необходимо:
-0)Клонировать проект.
+0)Клонировать проект.  
 $git clone https://github.com/McFriend/skyeng_test_ios.git  
 1)Скачать cocoapods.  
 $sudo gem install cocoapods  
