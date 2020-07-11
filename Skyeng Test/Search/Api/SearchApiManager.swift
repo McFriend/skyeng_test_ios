@@ -12,4 +12,8 @@ class SearchApiManager: ApiManager {
     func performSearch(query: String, page: Int, pageSize: Int) -> Observable<[WordModel]> {
         self.sendRequest(.get, requestURL(endpoint: "/words/search"), parameters: ["search":query, "page":page, "pageSize":pageSize])
     }
+    
+    func getDetailMeaning(id: Int) -> Observable<[DetailMeaningModel]> {
+        self.sendRequest(.get, requestURL(endpoint: "/meanings"), parameters: ["ids":id])
+    }
 }
