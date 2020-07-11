@@ -8,6 +8,8 @@ PODS:
   - RxAlamofire/Core (5.6.0):
     - Alamofire (~> 5.1)
     - RxSwift (~> 5.1)
+  - RxBlocking (5.1.1):
+    - RxSwift (~> 5)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -22,6 +24,7 @@ PODS:
 
 DEPENDENCIES:
   - RxAlamofire (~> 5.6)
+  - RxBlocking (~> 5.1)
   - RxCocoa (~> 5.1)
   - RxKingfisher (~> 1.0)
   - RxSwift (~> 5.1)
@@ -32,6 +35,7 @@ SPEC REPOS:
     - Alamofire
     - Kingfisher
     - RxAlamofire
+    - RxBlocking
     - RxCocoa
     - RxKingfisher
     - RxRelay
@@ -42,12 +46,13 @@ SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   Kingfisher: 7b64389a43139c903ec434788344c288217c792d
   RxAlamofire: f34ddbab56fa2a36f99737f4d4ecc22288a1384f
+  RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxKingfisher: 0f07678aca3e6a20143dfba67ec2d2c70d443a9a
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 65cd461780b5baacd6855f6d62f81a0790154061
+PODFILE CHECKSUM: e85ff9bca767e0ce3a44f3f59ca2e7f510dafb0e
 
 COCOAPODS: 1.9.1

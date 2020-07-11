@@ -8,7 +8,12 @@
 
 import Foundation
 import RxSwift
-class SearchApiManager: ApiManager {
+protocol SearchApiManagerProtocol: class {
+    func performSearch(query: String, page: Int, pageSize: Int) -> Observable<[WordModel]>
+    func getDetailMeaning(id: Int) -> Observable<[DetailMeaningModel]>
+}
+
+class SearchApiManager: ApiManager, SearchApiManagerProtocol {
     func performSearch(query: String, page: Int, pageSize: Int) -> Observable<[WordModel]> {
         self.sendRequest(.get, requestURL(endpoint: "/words/search"), parameters: ["search":query, "page":page, "pageSize":pageSize])
     }

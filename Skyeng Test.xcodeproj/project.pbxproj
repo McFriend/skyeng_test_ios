@@ -17,6 +17,27 @@
 		F5B02DA124BA37390036680B /* DetailMeaningTranslationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B02DA024BA37390036680B /* DetailMeaningTranslationTableViewCell.swift */; };
 		F5B02DA324BA43120036680B /* DetailMeaningDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B02DA224BA43120036680B /* DetailMeaningDescriptionTableViewCell.swift */; };
 		F5B02DA524BA4B640036680B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B02DA424BA4B640036680B /* AVFoundation.framework */; };
+		F5B02DA924BA5F670036680B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A6724B9F42A00AB5780 /* SearchViewModel.swift */; };
+		F5B02DAA24BA60C60036680B /* SearchApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7924BA077700AB5780 /* SearchApiManager.swift */; };
+		F5B02DAB24BA628C0036680B /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7C24BA07C200AB5780 /* WordModel.swift */; };
+		F5B02DAD24BA64450036680B /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7424BA02CC00AB5780 /* ApiManager.swift */; };
+		F5B02DAE24BA64490036680B /* DetailMeaningModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54234F224BA2CE4002CD238 /* DetailMeaningModel.swift */; };
+		F5B02DAF24BA645C0036680B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A5824B9E92500AB5780 /* ViewModel.swift */; };
+		F5B02DB024BA64640036680B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A6B24B9FACA00AB5780 /* Extensions.swift */; };
+		F5B02DB124BA64800036680B /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A8524BA222200AB5780 /* SearchResultViewModel.swift */; };
+		F5B02DB224BA64870036680B /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A6424B9ED6400AB5780 /* SearchResultTableViewCell.swift */; };
+		F5B02DB324BA648C0036680B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A6224B9ED4900AB5780 /* TableViewCell.swift */; };
+		F5B02DB424BA64950036680B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3AE9324B9E29000F425D4 /* ViewController.swift */; };
+		F5B02DB524BA649C0036680B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A5624B9E79600AB5780 /* Router.swift */; };
+		F5B02DB624BA64BA0036680B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A5B24B9EADA00AB5780 /* SearchViewController.swift */; };
+		F5B02DB724BA64C10036680B /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54234E824BA2958002CD238 /* NavigationController.swift */; };
+		F5B02DB824BA64C70036680B /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A8024BA220000AB5780 /* SearchResultController.swift */; };
+		F5B02DB924BA64CC0036680B /* DetailMeaningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54234EE24BA2C4F002CD238 /* DetailMeaningController.swift */; };
+		F5B02DBA24BA64FD0036680B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A6924B9F4DF00AB5780 /* TableViewController.swift */; };
+		F5B02DBB24BA65060036680B /* DetailMeaningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54234F024BA2CA9002CD238 /* DetailMeaningViewModel.swift */; };
+		F5B02DBC24BA650D0036680B /* DetailMeaningHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B02D9E24BA359C0036680B /* DetailMeaningHeaderTableViewCell.swift */; };
+		F5B02DBD24BA65100036680B /* DetailMeaningTranslationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B02DA024BA37390036680B /* DetailMeaningTranslationTableViewCell.swift */; };
+		F5B02DBE24BA65160036680B /* DetailMeaningDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B02DA224BA43120036680B /* DetailMeaningDescriptionTableViewCell.swift */; };
 		F5C3AE9024B9E29000F425D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3AE8F24B9E29000F425D4 /* AppDelegate.swift */; };
 		F5C3AE9224B9E29000F425D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3AE9124B9E29000F425D4 /* SceneDelegate.swift */; };
 		F5C3AE9424B9E29000F425D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3AE9324B9E29000F425D4 /* ViewController.swift */; };
@@ -33,7 +54,6 @@
 		F5F40A6C24B9FACA00AB5780 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A6B24B9FACA00AB5780 /* Extensions.swift */; };
 		F5F40A6F24BA00F900AB5780 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5F40A7124BA00F900AB5780 /* Localizable.strings */; };
 		F5F40A7524BA02CC00AB5780 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7424BA02CC00AB5780 /* ApiManager.swift */; };
-		F5F40A7724BA057600AB5780 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7624BA057600AB5780 /* Errors.swift */; };
 		F5F40A7A24BA077700AB5780 /* SearchApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7924BA077700AB5780 /* SearchApiManager.swift */; };
 		F5F40A7D24BA07C200AB5780 /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A7C24BA07C200AB5780 /* WordModel.swift */; };
 		F5F40A8124BA220000AB5780 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F40A8024BA220000AB5780 /* SearchResultController.swift */; };
@@ -86,7 +106,6 @@
 		F5F40A7024BA00F900AB5780 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F5F40A7324BA010F00AB5780 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F5F40A7424BA02CC00AB5780 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
-		F5F40A7624BA057600AB5780 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		F5F40A7924BA077700AB5780 /* SearchApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApiManager.swift; sourceTree = "<group>"; };
 		F5F40A7C24BA07C200AB5780 /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
 		F5F40A8024BA220000AB5780 /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
@@ -188,6 +207,19 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		F5B02DA824BA5F2A0036680B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F5C3AE9324B9E29000F425D4 /* ViewController.swift */,
+				F54234E824BA2958002CD238 /* NavigationController.swift */,
+				F5F40A6224B9ED4900AB5780 /* TableViewCell.swift */,
+				F5F40A6924B9F4DF00AB5780 /* TableViewController.swift */,
+				F5F40A5824B9E92500AB5780 /* ViewModel.swift */,
+				F5F40A7424BA02CC00AB5780 /* ApiManager.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		F5C3AE8324B9E29000F425D4 = {
 			isa = PBXGroup;
 			children = (
@@ -213,15 +245,9 @@
 			children = (
 				F5C3AE8F24B9E29000F425D4 /* AppDelegate.swift */,
 				F5C3AE9124B9E29000F425D4 /* SceneDelegate.swift */,
-				F5F40A5624B9E79600AB5780 /* Router.swift */,
-				F5C3AE9324B9E29000F425D4 /* ViewController.swift */,
-				F54234E824BA2958002CD238 /* NavigationController.swift */,
-				F5F40A6224B9ED4900AB5780 /* TableViewCell.swift */,
-				F5F40A6924B9F4DF00AB5780 /* TableViewController.swift */,
-				F5F40A5824B9E92500AB5780 /* ViewModel.swift */,
 				F5F40A6B24B9FACA00AB5780 /* Extensions.swift */,
-				F5F40A7624BA057600AB5780 /* Errors.swift */,
-				F5F40A7424BA02CC00AB5780 /* ApiManager.swift */,
+				F5F40A5624B9E79600AB5780 /* Router.swift */,
+				F5B02DA824BA5F2A0036680B /* Base */,
 				F54234EA24BA2BC8002CD238 /* Detail Meaning */,
 				F5F40A7F24BA21CF00AB5780 /* Search Result */,
 				F5F40A5A24B9EAC200AB5780 /* Search */,
@@ -520,7 +546,6 @@
 				F5F40A6C24B9FACA00AB5780 /* Extensions.swift in Sources */,
 				F5C3AE9424B9E29000F425D4 /* ViewController.swift in Sources */,
 				F54234F324BA2CE4002CD238 /* DetailMeaningModel.swift in Sources */,
-				F5F40A7724BA057600AB5780 /* Errors.swift in Sources */,
 				F5F40A5724B9E79600AB5780 /* Router.swift in Sources */,
 				F54234E924BA2958002CD238 /* NavigationController.swift in Sources */,
 				F5C3AE9024B9E29000F425D4 /* AppDelegate.swift in Sources */,
@@ -535,7 +560,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5B02DB624BA64BA0036680B /* SearchViewController.swift in Sources */,
+				F5B02DBB24BA65060036680B /* DetailMeaningViewModel.swift in Sources */,
+				F5B02DA924BA5F670036680B /* SearchViewModel.swift in Sources */,
+				F5B02DB224BA64870036680B /* SearchResultTableViewCell.swift in Sources */,
+				F5B02DB024BA64640036680B /* Extensions.swift in Sources */,
+				F5B02DB124BA64800036680B /* SearchResultViewModel.swift in Sources */,
+				F5B02DAA24BA60C60036680B /* SearchApiManager.swift in Sources */,
 				F5C3AEA724B9E29300F425D4 /* Skyeng_TestTests.swift in Sources */,
+				F5B02DAD24BA64450036680B /* ApiManager.swift in Sources */,
+				F5B02DB724BA64C10036680B /* NavigationController.swift in Sources */,
+				F5B02DB924BA64CC0036680B /* DetailMeaningController.swift in Sources */,
+				F5B02DB424BA64950036680B /* ViewController.swift in Sources */,
+				F5B02DAB24BA628C0036680B /* WordModel.swift in Sources */,
+				F5B02DBD24BA65100036680B /* DetailMeaningTranslationTableViewCell.swift in Sources */,
+				F5B02DBC24BA650D0036680B /* DetailMeaningHeaderTableViewCell.swift in Sources */,
+				F5B02DBA24BA64FD0036680B /* TableViewController.swift in Sources */,
+				F5B02DB524BA649C0036680B /* Router.swift in Sources */,
+				F5B02DBE24BA65160036680B /* DetailMeaningDescriptionTableViewCell.swift in Sources */,
+				F5B02DB324BA648C0036680B /* TableViewCell.swift in Sources */,
+				F5B02DB824BA64C70036680B /* SearchResultController.swift in Sources */,
+				F5B02DAF24BA645C0036680B /* ViewModel.swift in Sources */,
+				F5B02DAE24BA64490036680B /* DetailMeaningModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

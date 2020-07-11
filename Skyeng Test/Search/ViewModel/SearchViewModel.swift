@@ -9,15 +9,21 @@
 import Foundation
 import RxRelay
 import RxSwift
+
 class SearchViewModel: ViewModel {
     var title = BehaviorRelay<String?>(value: "SEARCH_TITLE".localized)
     var searchText = BehaviorRelay<String?>(value: "")
     var searchPlaceholder = BehaviorRelay<String?>(value: "SEARCH_PLACEHOLDER".localized)
     var results = BehaviorRelay<[WordModel]?>(value: [])
-    var apiManager = SearchApiManager()
     var page = BehaviorRelay<Int>(value: 1)
     var pageSize = BehaviorRelay<Int>(value: 10)
     var loadedAll = BehaviorRelay<Bool>(value: false)
+    var apiManager: SearchApiManagerProtocol
+
+    init(apiManager: SearchApiManagerProtocol = SearchApiManager()) {
+        self.apiManager = apiManager
+        super.init()
+    }
     
     override func configure() {
         super.configure()
@@ -28,7 +34,7 @@ class SearchViewModel: ViewModel {
         }).disposed(by: bag)
         
         Observable.combineLatest(searchText, page, pageSize).flatMapLatest({ [unowned self] in
-            self.apiManager.performSearch(query: $0 ?? "", page: $1, pageSize: $2)
+            self.performSearch(query: $0 ?? "", page: $1, pageSize: $2)
         }).do(onNext: { [unowned self] in
             self.loadedAll.accept($0.isEmpty)
         }).map({[unowned self] in
@@ -36,6 +42,9 @@ class SearchViewModel: ViewModel {
         })
             .bind(to: results)
             .disposed(by: bag)
+    }
+    func performSearch(query: String, page: Int, pageSize: Int) -> Observable<[WordModel]> {
+        return self.apiManager.performSearch(query: query, page: page, pageSize: pageSize)
     }
     
     func cellData(for model: WordModel) -> SearchResultTableViewCellData {
