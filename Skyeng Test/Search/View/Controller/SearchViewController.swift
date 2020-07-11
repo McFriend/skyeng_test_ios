@@ -69,6 +69,8 @@ class SearchViewController: TableViewController {
         searchField.searchBarStyle = .minimal
         view.addSubview(searchField)
         tableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.typeName)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 8)).setBackgroundColor(to: .clear)
+        tableView.separatorStyle = .none
     }
     
     override func configureConstraints() {
