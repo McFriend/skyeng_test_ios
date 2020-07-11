@@ -10,9 +10,9 @@ import UIKit
 protocol ViewControllerProtocol: UIViewController {}
 
 class ViewController: UIViewController, ViewControllerProtocol {
-    var viewModel: ViewModelProtocol
-    init(viewModel: ViewModelProtocol) {
-        self.viewModel = viewModel
+    var _viewModel: ViewModelProtocol?
+    init(viewModel: ViewModelProtocol?) {
+        self._viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -23,10 +23,23 @@ class ViewController: UIViewController, ViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         adjustUI()
+        configureConstraints()
+        bind()
     }
     
+    ///Добавление элементов UI на экран. Настройка внешнего вида.
     open func adjustUI() {
         view.backgroundColor = view.backgroundColor ?? UIColor.systemBackground
+    }
+    
+    ///Биндинг UI и ViewModel
+    open func bind() {
+        
+    }
+    
+    ///Расположение элементов на экране.
+    open func configureConstraints() {
+
     }
 }
 
