@@ -40,6 +40,8 @@ class SearchResultController: TableViewController {
     override func adjustUI() {
         super.adjustUI()
         tableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.typeName)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 4)).setBackgroundColor(to: .clear)
+        tableView.separatorStyle = .none
     }
 
     override func configureConstraints() {

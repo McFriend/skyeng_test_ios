@@ -27,7 +27,7 @@ class ApiManager: ApiManagerProtocol {
                                             headers: HTTPHeaders? = nil,
                                             interceptor: RequestInterceptor? = nil) -> Observable<ResultType> {
         RxAlamofire.requestData(method, url, parameters: parameters, encoding: encoding, headers: headers, interceptor: interceptor)
-            .debug().map({ response, data -> ResultType in
+            .map({ response, data -> ResultType in
                 let decoder = JSONDecoder()
                 let responseValue = try decoder.decode(ResultType.self, from: data)
                 return responseValue

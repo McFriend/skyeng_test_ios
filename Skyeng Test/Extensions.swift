@@ -35,3 +35,10 @@ extension UIScreen {
         return bounds.height > bounds.width
     }
 }
+
+extension UIView {
+    func setBackgroundColor(to color: UIColor) -> UIView {
+        self.backgroundColor = color
+        return self
+    }
+}
