@@ -13,6 +13,6 @@ class TableViewController: ViewController {
     override func adjustUI() {
         super.adjustUI()
         view.addSubview(tableView)
-        tableView.keyboardDismissMode = .interactive
+        tableView.keyboardDismissMode = .onDrag
     }
 }

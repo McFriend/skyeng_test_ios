@@ -23,3 +23,15 @@ extension String {
         NSLocalizedString(self, comment: "")
     }
 }
+
+extension String {
+    var httpsUrl: String {
+        "https:" + self
+    }
+}
+
+extension UIScreen {
+    var isPortrait: Bool {
+        return bounds.height > bounds.width
+    }
+}

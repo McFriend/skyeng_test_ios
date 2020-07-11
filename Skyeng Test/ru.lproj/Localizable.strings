@@ -6,4 +6,21 @@
   Copyright © 2020 Georgiy Sabanov. All rights reserved.
 */
 
-"SEARCH_PLACEHOLDER" = "Поиск";
+"SEARCH_PLACEHOLDER" = "Введите слово";
+"SEARCH_TITLE" = "Поиск";
+"NOUN" = "Существительное";
+"VERB" = "Глагол";
+"ADJECTIVE" = "Прилагательное";
+"ADVERB" = "Наречие";
+"PREPOSITION" = "Предлог";
+"PRONOUN" = "Местоимение";
+"CARDINAL_NUMBER" = "Кардинальный номер";
+"CONJUNCTION" = "Соединение";
+"INTERJECTION" = "Interjection";
+"ARTICLE" = "Статья";
+"СОКРАЩЕНИЕ" = "Сокращение";
+"PARTICLE" = "Частица";
+"ORDINAL_NUMBER" = "Порядковый номер";
+"MODAL_VERB" = "Модальный глагол";
+"PHRASE" = "Фраза";
+"IDIOM" = "Идиома";

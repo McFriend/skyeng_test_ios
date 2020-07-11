@@ -41,11 +41,6 @@ class TableViewCell: UITableViewCell, DisposeBagContainer {
     {
         
     }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        bag = DisposeBag()
-    }
 }
 
 extension UITableViewCell {

@@ -10,7 +10,6 @@ target 'Skyeng Test' do
   pod 'RxCocoa', '~> 5.1'
   pod 'RxAlamofire', '~> 5.6'
   pod 'SnapKit', '~> 5.0'
-  pod 'RxRealm'
   pod 'RxKingfisher', '~> 1.0'
   target 'Skyeng TestTests' do
     inherit! :search_paths
