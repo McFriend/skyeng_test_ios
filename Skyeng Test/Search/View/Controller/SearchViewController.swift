@@ -31,6 +31,21 @@ class SearchViewController: TableViewController {
             return UITableViewCell()
         }
         .disposed(by: viewModel.bag)
+        tableView.rx.willDisplayCell.compactMap({ [unowned self] event -> Int? in
+            guard self.viewModel?.loadedAll.value != true else { return nil }
+            let total = event.indexPath.row + 1
+            let pageSize = viewModel.pageSize.value
+            let (q, r) = total.quotientAndRemainder(dividingBy: pageSize)
+            let nextPage = q + 1
+            if r == 0, nextPage != viewModel.page.value {
+                return nextPage
+            } else {
+                return nil
+            }
+        }).bind(to: viewModel.page).disposed(by: viewModel.bag)
+        tableView.rx.itemSelected.subscribe(onNext: { [unowned self] (indexPath) in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }).disposed(by: viewModel.bag)
         searchField
             .rx.text
             .orEmpty
@@ -40,6 +55,9 @@ class SearchViewController: TableViewController {
             .disposed(by: viewModel.bag)
         viewModel.searchPlaceholder.subscribe(onNext: { [unowned self] newValue in
             self.searchField.placeholder = newValue
+        }).disposed(by: viewModel.bag)
+        searchField.rx.searchButtonClicked.subscribe(onNext: { [unowned self] in
+            self.searchField.resignFirstResponder()
         }).disposed(by: viewModel.bag)
     }
     

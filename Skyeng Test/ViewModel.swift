@@ -8,9 +8,13 @@
 
 import Foundation
 import RxSwift
-protocol ViewModelProtocol: ViewModel {
+protocol DisposeBagContainer {
     var bag: DisposeBag {get set}
 }
+protocol ViewModelProtocol: DisposeBagContainer {
+    func configure()
+}
+
 class ViewModel: ViewModelProtocol {
     var bag: DisposeBag = DisposeBag()
     

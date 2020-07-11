@@ -8,9 +8,9 @@
 
 import UIKit
 import RxSwift
-class TableViewCell: UITableViewCell {
-    var _viewModel: ViewModelProtocol?
-
+class TableViewCell: UITableViewCell, DisposeBagContainer {
+    var bag: DisposeBag = DisposeBag()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initialSetup()
@@ -34,7 +34,7 @@ class TableViewCell: UITableViewCell {
     
     func adjustUI()
     {
-        selectionStyle = .none
+        
     }
     
     func configureConstraints()
@@ -44,7 +44,7 @@ class TableViewCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        _viewModel?.bag = DisposeBag()
+        bag = DisposeBag()
     }
 }
 

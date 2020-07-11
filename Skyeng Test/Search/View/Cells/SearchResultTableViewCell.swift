@@ -11,18 +11,11 @@ import RxSwift
 import RxCocoa
 import RxRelay
 import RxKingfisher
-class SearchResultTableViewCellViewModel: ViewModel {
-    var searchText: BehaviorRelay<String?>
-    var title: BehaviorRelay<String?>
-    var subtitle: BehaviorRelay<String?>
-    var previewURL: BehaviorRelay<String?>
-
-    init(searchText: BehaviorRelay<String?>, title: BehaviorRelay<String?>, subtitle: BehaviorRelay<String?>, previewURL: BehaviorRelay<String?>) {
-        self.searchText = searchText
-        self.title = title
-        self.subtitle = subtitle
-        self.previewURL = previewURL
-    }
+struct SearchResultTableViewCellViewModel {
+    var searchText: String?
+    var title: String?
+    var subtitle: String?
+    var previewURL: String?
 }
 
 class SearchResultTableViewCell: TableViewCell {
@@ -33,18 +26,9 @@ class SearchResultTableViewCell: TableViewCell {
     let subtitleLabelFont = UIFont.preferredFont(forTextStyle: .caption1)
     let titleLabelColor = UIColor.label
     let subtitleLabelColor = UIColor.secondaryLabel
-
-    var viewModel: SearchResultTableViewCellViewModel? {
-        get {
-            _viewModel as? SearchResultTableViewCellViewModel
-        }
-        set {
-            _viewModel = newValue
-        }
-    }
-            
+    var viewModel: SearchResultTableViewCellViewModel?
+    
     func configured(with viewModel: SearchResultTableViewCellViewModel) -> SearchResultTableViewCell{
-        prepareForReuse()
         self.viewModel = viewModel
         bindViewModel()
         return self
@@ -52,14 +36,18 @@ class SearchResultTableViewCell: TableViewCell {
     
     func bindViewModel() {
         guard let viewModel = viewModel else { return }
-        Observable.combineLatest(viewModel.title.map({$0 ?? ""}), viewModel.searchText.map({$0 ?? ""})).map { [unowned self] (title, searchText) -> NSAttributedString in
-            let attrString = NSMutableAttributedString(string: title, attributes: [.font: self.titleLabelFont, .foregroundColor: self.titleLabelColor])
-            let searchRange = NSString(string: title).range(of: searchText)
-            attrString.addAttribute(.font, value: self.titleLabelFont.boldVersion, range: searchRange)
-            return attrString
-        }.bind(to: titleLabel.rx.attributedText).disposed(by: viewModel.bag)
-        viewModel.subtitle.bind(to: subtitleLabel.rx.text).disposed(by: viewModel.bag)
-        viewModel.previewURL.map({"https:" + ($0 ?? "")}).compactMap({URL(string: $0)}).bind(to: previewImageView.kf.rx.image()).disposed(by: viewModel.bag)
+        updateTitleLabel(title: viewModel.title ?? "", searchText: viewModel.searchText ?? "")
+        subtitleLabel.text = viewModel.subtitle
+        if let url = URL(string: "https:" + (viewModel.previewURL ?? "")) {
+            previewImageView.kf.setImage(with: url)
+        }
+    }
+    
+    func updateTitleLabel(title: String, searchText: String) {
+        let attrString = NSMutableAttributedString(string: title, attributes: [.font: self.titleLabelFont, .foregroundColor: self.titleLabelColor])
+        let searchRange = NSString(string: title.lowercased()).range(of: searchText.lowercased())
+        attrString.addAttribute(.font, value: self.titleLabelFont.boldVersion, range: searchRange)
+        self.titleLabel.attributedText = attrString
     }
     
     override func adjustUI() {
@@ -91,8 +79,13 @@ class SearchResultTableViewCell: TableViewCell {
         subtitleLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(titleLabel)
             make.top.equalTo(titleLabel.snp.bottom)
-            make.trailing.equalToSuperview().offset(-8)
+            make.trailing.equalToSuperview().offset(-44)
             make.bottom.lessThanOrEqualToSuperview().offset(-8)
         }
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        previewImageView.kf.cancelDownloadTask()
+        previewImageView.image = nil
     }
 }
