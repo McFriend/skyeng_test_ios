@@ -38,6 +38,9 @@ class DetailMeaningController: TableViewController {
             }
             cells.append(DetailMeaningTranslationTableViewCellData(imageUrl: model.images?.first?.url ?? "", originalText: [model.prefix, model.text].compactMap({$0}).joined(separator: " "), translatedText: model.translation?.text ?? "", audioUrl: model.soundUrl))
             cells.append(DetailMeaningDescriptionTableViewCellData(transcript: model.transcription ?? "", description: model.definition?.text ?? "", partOfSpeech: model.partOfSpeechCode?.localizedValue ?? ""))
+            if let mnemonics = model.mnemonics {
+                cells.append(DetailMeaningLearnTipsTableViewCellData(title: "HOW_TO_LEARN".localized.uppercased(), text: mnemonics))
+            }
             return cells
         }).bind(to: self.tableView.rx.items) { tableView, row, element  in
             if let model = element as? DetailMeaningHeaderTableViewCellData, let cell = tableView.dequeueReusableCell(withIdentifier: DetailMeaningHeaderTableViewCell.typeName) as? DetailMeaningHeaderTableViewCell {
@@ -49,7 +52,9 @@ class DetailMeaningController: TableViewController {
             if let model = element as? DetailMeaningDescriptionTableViewCellData, let cell = tableView.dequeueReusableCell(withIdentifier: DetailMeaningDescriptionTableViewCell.typeName) as? DetailMeaningDescriptionTableViewCell {
                 return cell.configured(with: model)
             }
-            
+            if let model = element as? DetailMeaningLearnTipsTableViewCellData, let cell = tableView.dequeueReusableCell(withIdentifier: DetailMeaningLearnTipsTableViewCell.typeName) as? DetailMeaningLearnTipsTableViewCell {
+                return cell.configured(with: model)
+            }
             return UITableViewCell()
         }.disposed(by: viewModel.bag)
         tableView.rx.itemSelected.subscribe(onNext: { [unowned self] (indexPath) in
@@ -62,6 +67,7 @@ class DetailMeaningController: TableViewController {
         tableView.register(DetailMeaningHeaderTableViewCell.self, forCellReuseIdentifier: DetailMeaningHeaderTableViewCell.typeName)
         tableView.register(DetailMeaningTranslationTableViewCell.self, forCellReuseIdentifier: DetailMeaningTranslationTableViewCell.typeName)
         tableView.register(DetailMeaningDescriptionTableViewCell.self, forCellReuseIdentifier: DetailMeaningDescriptionTableViewCell.typeName)
+        tableView.register(DetailMeaningLearnTipsTableViewCell.self, forCellReuseIdentifier: DetailMeaningLearnTipsTableViewCell.typeName)
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
     }

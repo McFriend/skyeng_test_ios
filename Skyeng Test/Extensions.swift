@@ -8,6 +8,46 @@
 
 import UIKit
 
+extension UILabel {
+    @discardableResult func setAttributedText(fromHtml html: String) -> Bool {
+        guard let data = html.data(using: .utf8, allowLossyConversion: true) else {
+            print(">>> Could not create UTF8 formatted data from \(html)")
+            return false
+        }
+
+        do {
+            let mutableText = try NSMutableAttributedString(
+                data: data,
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue],
+                documentAttributes: nil)
+            mutableText.replaceFonts(with: font)
+            self.attributedText = mutableText
+            return true
+        } catch (let error) {
+            print(">>> Could not create attributed text from \(html)\nError: \(error)")
+            return false
+        }
+    }
+}
+
+extension NSMutableAttributedString {
+    func replaceFonts(with font: UIFont) {
+        let baseFontDescriptor = font.fontDescriptor
+        var changes = [NSRange: UIFont]()
+        enumerateAttribute(.font, in: NSMakeRange(0, length), options: []) { foundFont, range, _ in
+            if let htmlTraits = (foundFont as? UIFont)?.fontDescriptor.symbolicTraits,
+                let adjustedDescriptor = baseFontDescriptor.withSymbolicTraits(htmlTraits) {
+                let newFont = UIFont(descriptor: adjustedDescriptor, size: font.pointSize)
+                changes[range] = newFont
+            }
+        }
+        changes.forEach { range, newFont in
+            removeAttribute(.font, range: range)
+            addAttribute(.font, value: newFont, range: range)
+        }
+    }
+}
+
 extension UIFont {
     var boldVersion: UIFont {
         var font = self

@@ -19,7 +19,9 @@ class SearchViewModel: ViewModel {
     var pageSize = BehaviorRelay<Int>(value: 10)
     var loadedAll = BehaviorRelay<Bool>(value: false)
     var apiManager: SearchApiManagerProtocol
-
+    var hint = BehaviorRelay<String?>(value: nil)
+    var hintImage = BehaviorRelay<NSTextAttachment?>(value: nil)
+    
     init(apiManager: SearchApiManagerProtocol = SearchApiManager()) {
         self.apiManager = apiManager
         super.init()
@@ -42,6 +44,28 @@ class SearchViewModel: ViewModel {
         })
             .bind(to: results)
             .disposed(by: bag)
+        
+        results.compactMap({$0?.isEmpty}).subscribe(onNext: { [unowned self] resultsEmpty in
+            if resultsEmpty {
+                if self.searchText.value?.isEmpty ?? true {
+                    self.hint.accept("EMPTY_SEARCH_HINT".localized)
+                    self.hintImage.accept(self.constructAttachment(symbolName: "book"))
+                } else {
+                    self.hint.accept("EMPTY_RESULTS_HINT".localized)
+                    self.hintImage.accept(self.constructAttachment(symbolName: "doc.text.magnifyingglass"))
+                }
+            } else {
+                self.hint.accept(nil)
+                self.hintImage.accept(nil)
+            }
+        }).disposed(by: bag)
+    }
+    
+    func constructAttachment(symbolName: String) -> NSTextAttachment {
+        let image = UIImage(systemName: symbolName, withConfiguration: UIImage.SymbolConfiguration(pointSize: 50)) ?? UIImage()
+        let attachment = NSTextAttachment(image: image)
+        attachment.bounds = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+        return attachment
     }
     func performSearch(query: String, page: Int, pageSize: Int) -> Observable<[WordModel]> {
         return self.apiManager.performSearch(query: query, page: page, pageSize: pageSize)
