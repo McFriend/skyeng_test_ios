@@ -12,6 +12,7 @@ import RxSwift
 
 class SearchViewController: TableViewController {
     let searchField = UISearchBar()
+    let hintLabel = UILabel()
     var viewModel: SearchViewModel? {
         get {
             _viewModel as? SearchViewModel
@@ -64,12 +65,33 @@ class SearchViewController: TableViewController {
                 self.searchField.resignFirstResponder()
             }
         }).disposed(by: viewModel.bag)
+        
+        Observable.combineLatest(viewModel.hint, viewModel.hintImage).map { [unowned self] (hint, image) -> NSAttributedString? in
+            guard hint != nil || image != nil else { return nil }
+            let attrString = NSMutableAttributedString()
+            if let image = image {
+                attrString.append(NSAttributedString(attachment: image))
+            }
+            if let hint = hint {
+                attrString.append(NSAttributedString(string: "\n\n" + hint, attributes: [.font: self.hintLabel.font ?? UIFont.systemFont(ofSize: 15), .foregroundColor: self.hintLabel.textColor ?? UIColor.label]))
+            }
+            return attrString
+        }.do(onNext: { [unowned self] (attrString) in
+            self.hintLabel.isHidden = attrString == nil
+            self.tableView.isHidden = attrString != nil
+        }).bind(to: hintLabel.rx.attributedText).disposed(by: viewModel.bag)
     }
     
     override func adjustUI() {
         super.adjustUI()
         searchField.searchBarStyle = .minimal
         view.addSubview(searchField)
+        view.addSubview(hintLabel)
+        view.sendSubviewToBack(hintLabel)
+        hintLabel.font = .preferredFont(forTextStyle: .headline)
+        hintLabel.textColor = .secondaryLabel
+        hintLabel.textAlignment = .center
+        hintLabel.numberOfLines = 0
         tableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.typeName)
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 8)).setBackgroundColor(to: .clear)
         tableView.separatorStyle = .none
@@ -85,6 +107,11 @@ class SearchViewController: TableViewController {
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(searchField.snp.bottom)
             make.bottom.equalToSuperview()
+        }
+        hintLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(tableView.snp.centerY)
+            make.leading.equalTo(view.snp.leadingMargin).offset(16)
+            make.trailing.equalTo(view.snp.trailingMargin).offset(-16)
         }
     }
 }

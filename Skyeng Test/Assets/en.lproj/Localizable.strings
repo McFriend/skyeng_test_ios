@@ -9,6 +9,8 @@
 "SEARCH_PLACEHOLDER" = "Enter a word";
 "SEARCH_TITLE" = "Search";
 "HOW_TO_LEARN" = "How to learn";
+"EMPTY_SEARCH_HINT" = "Search for new word and learn their meanings.";
+"EMPTY_RESULTS_HINT" = "An error occurred 😔. Check your internet connection.";
 "NOUN" = "Noun";
 "VERB" = "Verb";
 "ADJECTIVE" = "Adjective";
