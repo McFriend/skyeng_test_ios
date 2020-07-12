@@ -22,6 +22,7 @@ class DetailMeaningTranslationTableViewCell: TableViewCell {
     let originalTextLabel = UILabel()
     let translatedTextLabel = UILabel()
     let audioButton = UIButton()
+    let audioActivityIndicator = UIActivityIndicatorView(style: .medium)
     var data: DetailMeaningTranslationTableViewCellData?
     var player: AVAudioPlayer?
     var audioData: Data?
@@ -42,6 +43,7 @@ class DetailMeaningTranslationTableViewCell: TableViewCell {
         addSubview(originalTextLabel)
         addSubview(translatedTextLabel)
         addSubview(audioButton)
+        addSubview(audioActivityIndicator)
         backgroundColor = .secondarySystemBackground
         audioButton.setImage(UIImage(systemName: "speaker.3",
                                      withConfiguration: UIImage.SymbolConfiguration(weight: .bold)),
@@ -104,6 +106,9 @@ class DetailMeaningTranslationTableViewCell: TableViewCell {
             make.trailing.equalTo(audioButton.snp.leading).offset(-8)
             make.bottom.lessThanOrEqualToSuperview().offset(-16).priority(.high)
         }
+        audioActivityIndicator.snp.makeConstraints { (make) in
+            make.center.equalTo(audioButton)
+        }
         audioButton.setContentHuggingPriority(.required, for: .horizontal)
         audioButton.setContentHuggingPriority(.required, for: .vertical)
         audioButton.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -120,21 +125,35 @@ class DetailMeaningTranslationTableViewCell: TableViewCell {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
-            DispatchQueue.global(qos: .userInitiated).async {
-                if self.audioData == nil {
+            showAudioLoader()
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                if self?.audioData == nil {
                     guard let audioData = try? Data(contentsOf: url) else { return }
-                    self.audioData = audioData
+                    self?.audioData = audioData
                 }
-                DispatchQueue.main.async {
-                    guard self.audioData != nil else { return }
-                    self.player = try? AVAudioPlayer(data: self.audioData!)
-                    self.player?.prepareToPlay()
-                    self.player?.play()
+                DispatchQueue.main.async { [weak self] in
+                    self?.hideAudioLoader()
+                    guard let audioData = self?.audioData else { return }
+                    self?.player = try? AVAudioPlayer(data: audioData)
+                    self?.player?.prepareToPlay()
+                    self?.player?.play()
                 }
             }
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    private func showAudioLoader() {
+        audioActivityIndicator.startAnimating()
+        audioActivityIndicator.isHidden = false
+        audioButton.isHidden = true
+    }
+    
+    private func hideAudioLoader() {
+        audioActivityIndicator.stopAnimating()
+        audioActivityIndicator.isHidden = true
+        audioButton.isHidden = false
     }
     
     override func prepareForReuse() {
