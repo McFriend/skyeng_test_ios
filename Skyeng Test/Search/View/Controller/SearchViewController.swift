@@ -60,7 +60,9 @@ class SearchViewController: TableViewController {
             self.searchField.placeholder = newValue
         }).disposed(by: viewModel.bag)
         searchField.rx.searchButtonClicked.subscribe(onNext: { [unowned self] in
-            self.searchField.resignFirstResponder()
+            if self.searchField.isFirstResponder {
+                self.searchField.resignFirstResponder()
+            }
         }).disposed(by: viewModel.bag)
     }
     

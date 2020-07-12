@@ -38,6 +38,10 @@
 		F5B02DBC24BA650D0036680B /* DetailMeaningHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B02D9E24BA359C0036680B /* DetailMeaningHeaderTableViewCell.swift */; };
 		F5B02DBD24BA65100036680B /* DetailMeaningTranslationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B02DA024BA37390036680B /* DetailMeaningTranslationTableViewCell.swift */; };
 		F5B02DBE24BA65160036680B /* DetailMeaningDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B02DA224BA43120036680B /* DetailMeaningDescriptionTableViewCell.swift */; };
+		F5B02DC124BA8AF20036680B /* main_light.html in Resources */ = {isa = PBXBuildFile; fileRef = F5B02DC024BA8AF20036680B /* main_light.html */; };
+		F5B02DC324BA8C250036680B /* main_dark.html in Resources */ = {isa = PBXBuildFile; fileRef = F5B02DC224BA8C250036680B /* main_dark.html */; };
+		F5B02DC524BA8D4A0036680B /* DetailMeaningLearnTipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B02DC424BA8D4A0036680B /* DetailMeaningLearnTipsTableViewCell.swift */; };
+		F5B02DC624BA8F8F0036680B /* DetailMeaningLearnTipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B02DC424BA8D4A0036680B /* DetailMeaningLearnTipsTableViewCell.swift */; };
 		F5C3AE9024B9E29000F425D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3AE8F24B9E29000F425D4 /* AppDelegate.swift */; };
 		F5C3AE9224B9E29000F425D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3AE9124B9E29000F425D4 /* SceneDelegate.swift */; };
 		F5C3AE9424B9E29000F425D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C3AE9324B9E29000F425D4 /* ViewController.swift */; };
@@ -85,6 +89,9 @@
 		F5B02DA024BA37390036680B /* DetailMeaningTranslationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMeaningTranslationTableViewCell.swift; sourceTree = "<group>"; };
 		F5B02DA224BA43120036680B /* DetailMeaningDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMeaningDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		F5B02DA424BA4B640036680B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F5B02DC024BA8AF20036680B /* main_light.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = main_light.html; path = "Skyeng Test/Detail Meaning/View/Cells/main_light.html"; sourceTree = SOURCE_ROOT; };
+		F5B02DC224BA8C250036680B /* main_dark.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = main_dark.html; path = "Skyeng Test/Detail Meaning/View/Cells/main_dark.html"; sourceTree = SOURCE_ROOT; };
+		F5B02DC424BA8D4A0036680B /* DetailMeaningLearnTipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMeaningLearnTipsTableViewCell.swift; sourceTree = "<group>"; };
 		F5C3AE8C24B9E29000F425D4 /* Skyeng Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skyeng Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C3AE8F24B9E29000F425D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5C3AE9124B9E29000F425D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +210,7 @@
 				F5B02D9E24BA359C0036680B /* DetailMeaningHeaderTableViewCell.swift */,
 				F5B02DA024BA37390036680B /* DetailMeaningTranslationTableViewCell.swift */,
 				F5B02DA224BA43120036680B /* DetailMeaningDescriptionTableViewCell.swift */,
+				F5B02DC424BA8D4A0036680B /* DetailMeaningLearnTipsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -218,6 +226,16 @@
 				F5F40A7424BA02CC00AB5780 /* ApiManager.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		F5B02DBF24BA8AC90036680B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F5F40A7124BA00F900AB5780 /* Localizable.strings */,
+				F5B02DC024BA8AF20036680B /* main_light.html */,
+				F5B02DC224BA8C250036680B /* main_dark.html */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		F5C3AE8324B9E29000F425D4 = {
@@ -254,7 +272,7 @@
 				F5C3AE9824B9E29200F425D4 /* Assets.xcassets */,
 				F5C3AE9A24B9E29200F425D4 /* LaunchScreen.storyboard */,
 				F5C3AE9D24B9E29200F425D4 /* Info.plist */,
-				F5F40A7124BA00F900AB5780 /* Localizable.strings */,
+				F5B02DBF24BA8AC90036680B /* Assets */,
 			);
 			path = "Skyeng Test";
 			sourceTree = "<group>";
@@ -446,6 +464,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5B02DC124BA8AF20036680B /* main_light.html in Resources */,
+				F5B02DC324BA8C250036680B /* main_dark.html in Resources */,
 				F5C3AE9C24B9E29200F425D4 /* LaunchScreen.storyboard in Resources */,
 				F5F40A6F24BA00F900AB5780 /* Localizable.strings in Resources */,
 				F5C3AE9924B9E29200F425D4 /* Assets.xcassets in Resources */,
@@ -541,6 +561,7 @@
 				F5F40A6524B9ED6400AB5780 /* SearchResultTableViewCell.swift in Sources */,
 				F5F40A7D24BA07C200AB5780 /* WordModel.swift in Sources */,
 				F5F40A6A24B9F4DF00AB5780 /* TableViewController.swift in Sources */,
+				F5B02DC524BA8D4A0036680B /* DetailMeaningLearnTipsTableViewCell.swift in Sources */,
 				F5F40A7524BA02CC00AB5780 /* ApiManager.swift in Sources */,
 				F5B02D9F24BA359C0036680B /* DetailMeaningHeaderTableViewCell.swift in Sources */,
 				F5F40A6C24B9FACA00AB5780 /* Extensions.swift in Sources */,
@@ -577,6 +598,7 @@
 				F5B02DBC24BA650D0036680B /* DetailMeaningHeaderTableViewCell.swift in Sources */,
 				F5B02DBA24BA64FD0036680B /* TableViewController.swift in Sources */,
 				F5B02DB524BA649C0036680B /* Router.swift in Sources */,
+				F5B02DC624BA8F8F0036680B /* DetailMeaningLearnTipsTableViewCell.swift in Sources */,
 				F5B02DBE24BA65160036680B /* DetailMeaningDescriptionTableViewCell.swift in Sources */,
 				F5B02DB324BA648C0036680B /* TableViewCell.swift in Sources */,
 				F5B02DB824BA64C70036680B /* SearchResultController.swift in Sources */,
