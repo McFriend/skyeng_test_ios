@@ -26,6 +26,6 @@ class DetailMeaningViewModel: ViewModel {
             self?.isLoading.accept(false)
             }, onError: {  [weak self] _ in
             self?.isLoading.accept(false)
-        }).compactMap({$0.first}).bind(to: model).disposed(by: bag)
+        }).compactMap({$0?.first}).bind(to: model).disposed(by: bag)
     }
 }
