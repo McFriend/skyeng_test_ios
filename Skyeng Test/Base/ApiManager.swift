@@ -25,12 +25,12 @@ class ApiManager: ApiManagerProtocol {
                                             parameters: Parameters? = nil,
                                             encoding: ParameterEncoding = URLEncoding.default,
                                             headers: HTTPHeaders? = nil,
-                                            interceptor: RequestInterceptor? = nil) -> Observable<ResultType> {
-        RxAlamofire.requestData(method, url, parameters: parameters, encoding: encoding, headers: headers, interceptor: interceptor)
+                                            interceptor: RequestInterceptor? = nil) -> Observable<ResultType?> {
+        RxAlamofire.requestData(method, url, parameters: parameters, encoding: encoding, headers: headers, interceptor: interceptor).catchErrorJustReturn((HTTPURLResponse(), Data()))
             .map({ response, data -> ResultType in
                 let decoder = JSONDecoder()
                 let responseValue = try decoder.decode(ResultType.self, from: data)
                 return responseValue
-            })
+            }).catchErrorJustReturn(nil)
     }
 }

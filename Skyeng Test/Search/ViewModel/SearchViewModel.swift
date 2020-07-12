@@ -21,6 +21,8 @@ class SearchViewModel: ViewModel {
     var apiManager: SearchApiManagerProtocol
     var hint = BehaviorRelay<String?>(value: nil)
     var hintImage = BehaviorRelay<NSTextAttachment?>(value: nil)
+    var errorOccured = BehaviorRelay<Bool>(value: false)
+    var isLoading = BehaviorRelay<Bool>(value: false)
     
     init(apiManager: SearchApiManagerProtocol = SearchApiManager()) {
         self.apiManager = apiManager
@@ -35,11 +37,15 @@ class SearchViewModel: ViewModel {
             self.page.accept(1)
         }).disposed(by: bag)
         
-        Observable.combineLatest(searchText, page, pageSize).flatMapLatest({ [unowned self] in
+        Observable.combineLatest(searchText, page, pageSize).do(onNext: { (_,_,_) in
+            self.isLoading.accept(true)
+        }).flatMapLatest({ [unowned self] in
             self.performSearch(query: $0 ?? "", page: $1, pageSize: $2)
         }).do(onNext: { [unowned self] in
-            self.loadedAll.accept($0.isEmpty)
-        }).map({[unowned self] in
+            self.isLoading.accept(false)
+            self.errorOccured.accept($0?.isEmpty ?? true)
+            self.loadedAll.accept($0?.isEmpty ?? false)
+        }).compactMap({$0}).map({[unowned self] in
             (self.results.value ?? []) + $0
         })
             .bind(to: results)
@@ -50,9 +56,12 @@ class SearchViewModel: ViewModel {
                 if self.searchText.value?.isEmpty ?? true {
                     self.hint.accept("EMPTY_SEARCH_HINT".localized)
                     self.hintImage.accept(self.constructAttachment(symbolName: "book"))
-                } else {
+                } else if self.errorOccured.value && !self.isLoading.value {
                     self.hint.accept("EMPTY_RESULTS_HINT".localized)
                     self.hintImage.accept(self.constructAttachment(symbolName: "doc.text.magnifyingglass"))
+                } else {
+                    self.hint.accept(nil)
+                    self.hintImage.accept(nil)
                 }
             } else {
                 self.hint.accept(nil)
@@ -67,7 +76,7 @@ class SearchViewModel: ViewModel {
         attachment.bounds = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
         return attachment
     }
-    func performSearch(query: String, page: Int, pageSize: Int) -> Observable<[WordModel]> {
+    func performSearch(query: String, page: Int, pageSize: Int) -> Observable<[WordModel]?> {
         return self.apiManager.performSearch(query: query, page: page, pageSize: pageSize)
     }
     
